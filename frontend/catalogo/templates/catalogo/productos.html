@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo TechGear</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        .producto-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .precio { color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Catálogo de Productos - TechGear</h1>
+    
+    {% if productos %}
+        {% for p in productos %}
+            <div class="producto-card">
+                <h3>{{ p.nombre }}</h3>
+                <p>{{ p.descripcion }}</p>
+                <p class="precio">Precio: ${{ p.precio }}</p>
+                <p>Stock disponible: {{ p.stock }}</p>
+                <p><small>Categoría: {{ p.categoria }}</small></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No se pudieron cargar los productos o la API de FastAPI está apagada.</p>
+    {% endif %}
+</body>
+</html>
