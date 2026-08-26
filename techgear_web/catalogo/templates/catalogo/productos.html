@@ -150,27 +150,20 @@
 
                         {% if p.stock > 0 %}
 
-    <form method="POST" action="{% url 'comprar_producto' %}">
+    {% if p.stock > 0 %}
 
-        {% csrf_token %}
+    <a href="{% url 'checkout' p.id %}?nombre={{ p.nombre|urlencode }}&precio={{ p.precio }}&stock={{ p.stock }}"
+       class="comprar-btn">
+        Comprar
+    </a>
 
-        <input
-            type="hidden"
-            name="producto_id"
-            value="{{ p.id }}"
-        >
+{% else %}
 
-        <input
-            type="hidden"
-            name="cantidad"
-            value="1"
-        >
+    <button class="comprar-btn" disabled>
+        Agotado
+    </button>
 
-        <button type="submit" class="comprar-btn">
-            Comprar
-        </button>
-
-    </form>
+{% endif %}
 
 {% else %}
 
