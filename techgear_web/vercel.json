@@ -1,7 +1,7 @@
 {
-    "builsds": [
+    "builds": [
         {
-            "src": "wsgi.py",
+            "src": "frontend_techgear/wsgi.py",
             "use": "@vercel/python"
         }
     ],
